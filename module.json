@@ -1,0 +1,19 @@
+{
+  "id": "pf1-light-level-tooltip",
+  "title": "PF1e Light Level Tooltip",
+  "description": "Displays a tooltip showing the current light level (Bright/Normal/Dim/Darkness) when hovering over tokens on the canvas.",
+  "authors": [
+    {
+      "name": "Patrick",
+      "flags": {}
+    }
+  ],
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "scripts": [
+    "scripts/token-light.mjs"
+  ]
+}
