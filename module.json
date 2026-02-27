@@ -1,6 +1,6 @@
 {
   "id": "pf1-light-level-tooltip",
-  "title": "PF1e Light Level Tooltip",
+  "title": "PF1 Light Level Tooltip",
   "description": "Displays a tooltip showing the current light level (Bright/Normal/Dim/Darkness) when hovering over tokens on the canvas.",
   "authors": [
     {
