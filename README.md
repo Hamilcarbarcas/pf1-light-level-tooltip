@@ -8,6 +8,9 @@ A Foundry VTT module that displays the current light level when hovering over to
 
 ## Features
 
+![Example 1](assets/light-level-example-1.png)
+![Example 2](assets/light-level-example-2.png)
+
 - **Real-time Light Detection**: Shows the perceived light level at a token's location as you hover over it
 - **Light Level Categories**: Displays one of four states:
   - **Bright** - Full illumination from global scene lighting
