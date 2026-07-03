@@ -9,10 +9,7 @@
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-02-27
+
 ### Added
-### Changed
-### Fixed
-
----
-
-_Releases prior to this changelog are documented on the [GitHub Releases page](https://github.com/Hamilcarbarcas/pf1-light-level-tooltip/releases)._
+- Initial release.
