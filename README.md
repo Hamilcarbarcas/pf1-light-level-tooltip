@@ -1,4 +1,4 @@
-# PF1e Light Level Tooltip
+# PF1 Light Level Tooltip
 
 A Foundry VTT module that displays the current light level when hovering over tokens on the canvas.
 
