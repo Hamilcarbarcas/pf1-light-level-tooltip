@@ -4,8 +4,8 @@ let tlcTooltip;
 Hooks.once("init", () => {
   // Per-client setting to control whether the tooltip shows
   game.settings.register("pf1-light-level-tooltip", "tokenLightTooltipEnabled", {
-    name: "Enable Token Light Tooltip",
-    hint: "Show the light category tooltip when hovering tokens.",
+    name: "LLT.Settings.Enabled.Name",
+    hint: "LLT.Settings.Enabled.Hint",
     scope: "client",
     config: true,
     type: Boolean,
@@ -14,8 +14,8 @@ Hooks.once("init", () => {
 
   // Darkness thresholds for light level classification
   game.settings.register("pf1-light-level-tooltip", "darknessThresholdDim", {
-    name: "Darkness Threshold: Dim → Normal",
-    hint: "Global darkness level at which lighting changes from Dim to Normal (0.0 - 1.0). Default: 0.75",
+    name: "LLT.Settings.ThresholdDim.Name",
+    hint: "LLT.Settings.ThresholdDim.Hint",
     scope: "world",
     config: true,
     type: Number,
@@ -24,8 +24,8 @@ Hooks.once("init", () => {
   });
 
   game.settings.register("pf1-light-level-tooltip", "darknessThresholdDarkness", {
-    name: "Darkness Threshold: Darkness → Dim",
-    hint: "Global darkness level at which lighting changes from Darkness to Dim (0.0 - 1.0). Default: 0.95",
+    name: "LLT.Settings.ThresholdDarkness.Name",
+    hint: "LLT.Settings.ThresholdDarkness.Hint",
     scope: "world",
     config: true,
     type: Number,
@@ -35,15 +35,15 @@ Hooks.once("init", () => {
 
   // Keybinding: Alt+L toggles the tooltip on/off
   game.keybindings.register("pf1-light-level-tooltip", "toggleTokenLightTooltip", {
-    name: "Toggle Token Light Tooltip",
-    hint: "Enable/disable showing the token light tooltip.",
+    name: "LLT.Keybinding.Toggle.Name",
+    hint: "LLT.Keybinding.Toggle.Hint",
     editable: [{ key: "KeyL", modifiers: ["Alt"] }],
     onDown: () => {
       const current = game.settings.get("pf1-light-level-tooltip", "tokenLightTooltipEnabled");
       const next = !current;
       game.settings.set("pf1-light-level-tooltip", "tokenLightTooltipEnabled", next);
       if (!next && tlcTooltip) tlcTooltip.style.display = "none";
-      ui.notifications?.info(`Token Light Tooltip ${next ? "enabled" : "disabled"}`);
+      ui.notifications?.info(game.i18n.localize(next ? "LLT.Notif.Enabled" : "LLT.Notif.Disabled"));
       return true;
     },
     restricted: false,
@@ -88,7 +88,8 @@ Hooks.on("hoverToken", (token, hovered) => {
   }
 
   const state = getPerceivedLightStateAtToken(token);
-  tlcTooltip.textContent = `Light: ${state}`;
+  const stateLabel = game.i18n.localize(`LLT.State.${state}`);
+  tlcTooltip.textContent = game.i18n.format("LLT.Tooltip.Light", { state: stateLabel });
   tlcTooltip.style.display = "block";
 });
 

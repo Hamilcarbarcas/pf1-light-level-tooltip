@@ -9,6 +9,9 @@
 
 ## [Unreleased]
 
+### Changed
+- All user-facing text is now localizable via `game.i18n` (English `lang/en.json` included).
+
 ## [1.0.0] - 2026-02-27
 
 ### Added

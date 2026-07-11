@@ -1,0 +1,23 @@
+{
+  "LLT.Settings.Enabled.Name": "Enable Token Light Tooltip",
+  "LLT.Settings.Enabled.Hint": "Show the light category tooltip when hovering tokens.",
+
+  "LLT.Settings.ThresholdDim.Name": "Darkness Threshold: Dim → Normal",
+  "LLT.Settings.ThresholdDim.Hint": "Global darkness level at which lighting changes from Dim to Normal (0.0 - 1.0). Default: 0.75",
+
+  "LLT.Settings.ThresholdDarkness.Name": "Darkness Threshold: Darkness → Dim",
+  "LLT.Settings.ThresholdDarkness.Hint": "Global darkness level at which lighting changes from Darkness to Dim (0.0 - 1.0). Default: 0.95",
+
+  "LLT.Keybinding.Toggle.Name": "Toggle Token Light Tooltip",
+  "LLT.Keybinding.Toggle.Hint": "Enable/disable showing the token light tooltip.",
+
+  "LLT.Notif.Enabled": "Token Light Tooltip enabled",
+  "LLT.Notif.Disabled": "Token Light Tooltip disabled",
+
+  "LLT.Tooltip.Light": "Light: {state}",
+
+  "LLT.State.Bright": "Bright",
+  "LLT.State.Normal": "Normal",
+  "LLT.State.Dim": "Dim",
+  "LLT.State.Darkness": "Darkness"
+}
