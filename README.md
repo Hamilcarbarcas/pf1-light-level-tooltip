@@ -32,7 +32,7 @@ Hover your mouse over any token on the canvas and a tooltip will appear showing 
 Press **Alt+L** to enable/disable the tooltip display.
 
 ### Settings
-- **Enable Token Light Tooltip**: Client-side setting to control whether the tooltip shows (on by default)
+- **Enable Token Light Tooltip**: Per-user setting to control whether the tooltip shows (on by default). It follows the player to any browser
 - **Darkness Threshold: Dim → Normal**: Adjusts the darkness level at which lighting changes from Dim to Normal (default: 0.75, range: 0.0-1.0)
 - **Darkness Threshold: Darkness → Dim**: Adjusts the darkness level at which lighting changes from Darkness to Dim (default: 0.95, range: 0.0-1.0)
 

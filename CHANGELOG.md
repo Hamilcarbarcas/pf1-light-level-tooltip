@@ -10,6 +10,7 @@
 ## [Unreleased]
 
 ### Changed
+- **Enable Token Light Tooltip** is saved per user instead of per browser, so it follows a player to any device. A choice saved under the old per-browser setting is not carried over and starts from the default (on).
 - All user-facing text is now localizable via `game.i18n` (English `lang/en.json` included).
 
 ## [1.0.0] - 2026-02-27

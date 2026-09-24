@@ -2,11 +2,11 @@ let tlcTooltip;
 
 // Register setting and keybinding during init
 Hooks.once("init", () => {
-  // Per-client setting to control whether the tooltip shows
+  // Per-user setting to control whether the tooltip shows
   game.settings.register("pf1-light-level-tooltip", "tokenLightTooltipEnabled", {
     name: "LLT.Settings.Enabled.Name",
     hint: "LLT.Settings.Enabled.Hint",
-    scope: "client",
+    scope: "user",
     config: true,
     type: Boolean,
     default: true
