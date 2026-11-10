@@ -100,33 +100,47 @@ Hooks.on("hoverToken", (token, hovered) => {
  * Also detects if the token is only visible via darkvision (no actual light).
  */
 function getPerceivedLightStateAtToken(token) {
-  const center = token.center;
   const elev = token.document.elevation ?? 0;
+  const rank = { "Darkness": 0, "Dim": 1, "Normal": 2, "Bright": 3 };
 
-  // Calculate 4 sample points at half the distance from center to each corner
-  const w = token.document.width * canvas.grid.size;
-  const h = token.document.height * canvas.grid.size;
-  const offsetX = w / 4;
-  const offsetY = h / 4;
+  // The level most of the token is in: the highest state more than half of its sample points reach.
+  const states = samplePoints(token)
+    .map((pt) => getLightStateAtPoint(pt, elev))
+    .sort((a, b) => (rank[b] ?? 0) - (rank[a] ?? 0));
+  return states[Math.floor(states.length / 2)] ?? "Darkness";
+}
 
-  const samplePoints = [
-    { x: center.x + offsetX, y: center.y + offsetY },  // bottom-right quadrant
-    { x: center.x + offsetX, y: center.y - offsetY },  // top-right quadrant
-    { x: center.x - offsetX, y: center.y + offsetY },  // bottom-left quadrant
-    { x: center.x - offsetX, y: center.y - offsetY }   // top-left quadrant
-  ];
+/**
+ * One square or smaller: the center and the four points halfway to the corners. Larger: the center
+ * of every square it covers, plus its own center when that isn't one of them.
+ */
+function samplePoints(token) {
+  const center = token.center;
+  const size = canvas.grid.size;
+  const width = token.document.width ?? 1;
+  const height = token.document.height ?? 1;
 
-  // Test each sample point and keep the brightest result
-  let brightestState = "Darkness";
-
-  for (const pt of samplePoints) {
-    const state = getLightStateAtPoint(pt, elev);
-    brightestState = maxLightState(brightestState, state);
-    // Early exit if we found the brightest possible
-    if (brightestState === "Bright") break;
+  if (width <= 1 && height <= 1) {
+    const dx = (width * size) / 4;
+    const dy = (height * size) / 4;
+    return [
+      { x: center.x, y: center.y },
+      { x: center.x + dx, y: center.y + dy },
+      { x: center.x + dx, y: center.y - dy },
+      { x: center.x - dx, y: center.y + dy },
+      { x: center.x - dx, y: center.y - dy },
+    ];
   }
 
-  return brightestState;
+  const b = token.bounds;
+  const points = [];
+  for (let y = b.y + size / 2; y < b.y + b.height; y += size) {
+    for (let x = b.x + size / 2; x < b.x + b.width; x += size) points.push({ x, y });
+  }
+  if (!points.some((p) => Math.abs(p.x - center.x) < 1 && Math.abs(p.y - center.y) < 1)) {
+    points.push({ x: center.x, y: center.y });
+  }
+  return points;
 }
 
 /**

@@ -18,7 +18,9 @@ A Foundry VTT module that displays the current light level when hovering over to
   - **Dim** - Partially lit, within dim radius of light sources
   - **Darkness** - No light, including darkvision-only conditions
 - **Lighting Analysis**: 
-  - Samples 4 points across the token to get accurate readings
+  - Reports the level most of the token is in: the highest level reached by more than half of its
+    sample points (its center and four points halfway to its corners; for larger tokens, the center
+    of each square it covers and its center)
   - Combines ambient darkness with local light sources to determine light levels
   - Accounts for region-based darkness adjustments
 - **Fully Configurable**: on/off toggle via keybinding or settings

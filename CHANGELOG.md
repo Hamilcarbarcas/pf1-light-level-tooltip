@@ -10,6 +10,9 @@
 ## [Unreleased]
 
 ### Changed
+- **The tooltip reports the light level most of the token is in**, not its brightest point: the
+  highest level reached by more than half of its sample points (center plus four points halfway to
+  its corners; for a token larger than one square, each square's center plus its center).
 - **Enable Token Light Tooltip** is saved per user instead of per browser, so it follows a player to any device. A choice saved under the old per-browser setting is not carried over and starts from the default (on).
 - All user-facing text is now localizable via `game.i18n` (English `lang/en.json` included).
 
